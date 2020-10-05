@@ -1,0 +1,32 @@
+You are in Street 1
+You have 3 bullets
+A wooden sign reads "Welcome to the Hood!"
+There are intersections to streets 2, 6, and 10
+You hear a faint gunshot.
+You smell a drugged up gangster.
+(M)ove or (S)hoot?
+M
+Which Street?
+6
+You are in Street 6
+You have 3 bullets
+There is a pothole the width of the whole road.
+There are intersections to streets 1, 5, and 7
+You hear a faint gunshot.
+You sense a mobster!
+(M)ove or (S)hoot?
+S
+Which Street?
+7
+You didn't hit anything
+You are in Street 6
+You have 2 bullets
+There is a pothole the width of the whole road.
+There are intersections to streets 1, 5, and 7
+You hear a faint gunshot.
+You sense a mobster!
+(M)ove or (S)hoot?
+S
+Which Street?
+5
+You Win!!

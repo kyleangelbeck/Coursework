@@ -1,0 +1,16 @@
+thomas% mpicxx -o testing Project1-1.cpp
+thomas% mpirun -q -np 10 testing
+The first ring has completed its cycle:
+Frodo is a
+The second ring has completed its cycle:
+Dumb Dumb
+
+
+thomas% mpicxx -o testing Project1-2.cpp
+thomas% mpirun -q -np 10 testing
+Minimum: 0, Maximum: 284, Average: 139.36
+
+
+thomas% mpicxx -o testing Project1-3.cpp
+thomas% mpirun -q -np 10 testing
+Number of p's: 2

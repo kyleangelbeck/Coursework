@@ -1,0 +1,20 @@
+thomas% java Project1NEW
+Current cents inserted: 0
+Input:
+n
+Current cents inserted: 5
+Input:
+d
+Current cents inserted: 15
+Input:
+q
+Current cents inserted: 30
+Input:
+q
+Current cents inserted: 30
+Input:
+b
+Choose a piece of candy
+YumYum
+Here is your YumYum
+thomas%

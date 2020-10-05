@@ -1,0 +1,21 @@
+10 2 2
+1 2 6 10
+A wooden sign reads "Welcome to the Hood!"
+2 1 3 7
+There is a dumpster fire on the corner.
+3 2 4 8
+You see a homeless man sleeping on a bench.
+4 3 5 9
+There is a police car parked on the side of the road.
+5 4 6 10
+You almost step on a bag filled with a white substance.
+6 1 5 7
+There is a pothole the width of the whole road.
+7 2 6 8
+You find a pile of cigarette buds on the sidewalk.
+8 3 7 9
+You see an old man peering at you through a window.
+9 4 8 10
+A beaten down car drives past you.
+10 1 5 9
+You get a strong sense of "get the fuck outta there."

@@ -1,0 +1,45 @@
+CHIP CPU {
+
+    IN  inM[16],         // M value input  (M = contents of RAM[A])
+        instruction[16], // Instruction for execution
+        reset;           // Signals whether to re-start the current
+                         // program (reset==1) or continue executing
+                         // the current program (reset==0).
+
+    OUT outM[16],        // M value output
+        writeM,          // Write to M? 
+        addressM[15],    // Address in data memory (of M)
+        pc[15];          // address of next instruction
+
+    PARTS:
+	//A register load
+	Not(in=instruction[15],out=notins15);
+	Or(a=notins15,b=instruction[5],out=aregload);
+	
+	//D register load
+	And(a=instruction[15],b=instruction[4],out=dregload);
+	
+	//PC load
+	Not(in=ng,out=notng);
+	Not(in=zr,out=notzr);
+	
+	And(a=instruction[2],b=ng,out=and1);
+	And(a=instruction[1],b=zr,out=and2);
+	And(a=notng,b=notzr,out=ngnorzr);
+	And(a=instruction[0],b=ngnorzr,out=and3);
+	Or(a=and1,b=and2,out=or1);
+	Or(a=or1,b=and3,out=or2);
+	And(a=or2,b=instruction[15],out=pcload);
+	
+	//writeM
+	And(a=instruction[15],b=instruction[3],out=writeM);
+	
+    Mux16(a=aluout,b=instruction,sel=notins15,out=mux1out);
+	ARegister(in=mux1out,load=aregload,out=aregout,out[0..14]=addressM);
+	Mux16(a=aregout,b=inM,sel=instruction[12],out=mux2out);
+	PC(in=aregout,load=pcload,inc=true,reset=reset,out[0..14]=pc);
+	DRegister(in=aluout,load=dregload,out=dregout);
+	ALU(x=dregout,y=mux2out,zx=instruction[11],nx=instruction[10],
+		zy=instruction[9],ny=instruction[8],f=instruction[7],
+		no=instruction[6],zr=zr,ng=ng,out=aluout,out=outM);
+}
