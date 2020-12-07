@@ -1,0 +1,398 @@
+Question 1: Let a=61, b=79, and m=157. Compute the solution x in each of the following.
+
+    x = gcd(a,b)    : x = gcd(61,79)
+    
+        Using Euclid's Algorithm
+
+        u  | v  | r
+        ____________
+        79 | 61 | 18
+        61 | 18 | 7
+        18 | 7  | 4
+        7  | 4  | 3
+        4  | 3  | 1
+        3  | 1  | 0
+        1  | 0  | DONE
+
+        gcd = 1+0 = 1
+
+    x = b^-1 mod m  : x = 79^-1 mod 157 => 79x = 1 mod 157
+
+        **Using ModHelper.cpp
+
+        79*1 mod 157 = 79
+        79*2 mod 157 = 1
+        
+        x=2
+
+    x = a^b mod m   : x = 61^79 mod 157
+
+        Using Binary Algorithm
+        y=1, x=61
+        Iteration 1:
+            bit=79mod2=1
+            y=(1*61)mod157=61
+            b=79/2=39
+            x=61^2mod157=110
+        Iteration 2:
+            bit=39mod2=1
+            y=61*110mod157=116
+            b=39/2=19
+            x=110^2mod157=11
+        Iteration 3:
+            bit=19mod2=1
+            y=116*11mod157=20
+            b=19/2=9
+            x=11^2mod157=121
+        Iteration 4:
+            bit=9mod2=1
+            y=20*121mod157=65
+            b=9/2=4
+            x=121^2mod157=40
+        Iteration 5:
+            bit=4mod2=0
+            y=65
+            b=4/2=2
+            x=40^2mod157=30
+        Iteration 6:
+            bit=2mod2=0
+            y=65
+            b=2/2=1
+            x=30^2mod157=115
+        Iteration 7:
+            bit=1mod2=1
+            y=65*115mod157=96
+            b=1/2=0
+            x=115^2mod157=37
+        Iteration 8:
+            b=0, so return y.
+        
+        x=96
+
+    ax = b mod m    : 61x = 79 mod 157
+
+        **Using ModHelper.cpp
+
+        61*1 mod 157    = 61
+        61*2 mod 157    = 122
+        ...
+        61*148 mod 157  = 79
+
+        x = 148
+
+
+Question 2: Find the smallest prime p larger than 1000000000 (one billion).
+
+    1000000001 is composite by the Fermat Primality Test
+        1000000001^3 mod 3 = 2
+    1000000002 is divisible by 2
+    1000000003 is composite by the Fermat Primality Test
+        1000000003^5 mod 5 = 3
+    1000000004  is divisible by 2
+    1000000005  is divisible by 5
+    1000000006  is divisible by 2
+
+    1000000007 is prime
+        n-1 = 1000000006
+        n-1 = 2^1 * 500000003
+            so, s=1, d=500000003
+        
+        let a=357
+            357^500000003 mod 1000000007 = 1000000006 = n-1
+            Prime Under Miller-Rabin-Selfridge Primality Test
+
+        let a=1567
+            1567^500000003 mod 1000000007 = 1
+            Prime Under Miller-Rabin-Selfridge Primality Test
+
+        let a=97531
+            97531^500000003 mod 1000000007 = 1000000006 = n-1
+            Prime Under Miller-Rabin-Selfridge Primality Test
+
+        let a=136489
+            136489^500000003 mod 1000000007 = 1000000006 = n-1
+            Prime Under Miller-Rabin-Selfridge Primality Test
+
+        let a=976248317
+            976248317^500000003 mod 1000000007 = 1000000006 = n-1
+            Prime Under Miller-Rabin-Selfridge Primality Test
+
+
+Question 3: Factor the integer 111735593 using Pollard's ρ method.
+
+    x=y=2, f(t)=t^2+1
+
+    Pass 1: x=2, y=2
+        x = (2^2+1)mod(111735593) =     5
+        !y = (2^2+1)mod(111735593) =    5
+        y = (5^2+1)mod(111735593) =     26
+
+        gcd(|5-26|, 111735593) = 1
+
+    Pass 2: x=5, y=26
+        x = (5^2+1)mod(111735593) =     26
+        !y = (26^2+1)mod(111735593) =   677
+        y = (677^2+1)mod(111735593) =   458330
+
+        gcd(|26-458330|, 111735593) = 1
+
+    Pass 3: x=26, y=458330
+        x = (26^2+1)mod(111735593) =        677
+        !y = (458330^2+1)mod(111735593) =   3474061
+        y = (3474061^2+1)mod(111735593) =   91489420
+
+        gcd(|677-91489420|, 111735593) = 1
+    
+    Pass 4: x=677, y=91489420
+        x = (677^2+1)mod(111735593) =           458330
+        !y = (91489420^2+1)mod(111735593) =     23181373
+        y = (23181373^2+1)mod(111735593) =      33028208
+
+        gcd(|458330-33028208|, 111735593) = 1
+
+    Pass 5: x=458330, y=33028208
+        x = (458330^2+1)mod(111735593) =        3474061
+        !y = (33028208^2+1)mod(111735593) =     108411902
+        y = (108411902^2+1)mod(111735593) =     70725944
+
+        gcd(|3474061-70725944|, 111735593) = 1
+
+    Pass 6: x=3474061, y=70725944
+        x = (3474061^2+1)mod(111735593) =       91489420
+        !y = (70725944^2+1)mod(111735593) =     16202691
+        y = (16202691^2+1)mod(111735593) =      62199855
+
+        gcd(|91489420-62199855|, 111735593) = 1
+
+    Pass 7: x=91489420, y=62199855
+        x = (91489420^2+1)mod(111735593) =      23181373
+        !y = (62199855^2+1)mod(111735593) =     71928184
+        y = (71928184^2+1)mod(111735593) =      100791002
+
+        gcd(|23181373-100791002|, 111735593) = 1
+
+    Pass 8: x=23181373, y=100791002
+        x = (23181373^2+1)mod(111735593) =      33028208
+        !y = (100791002^2+1)mod(111735593) =    52657899
+        y = (52657899^2+1)mod(111735593) =      51524893
+
+        gcd(|33028208-51524893|, 111735593) = 1
+
+    Pass 9: x=33028208, y=51524893
+        x = (33028208^2+1)mod(111735593) =     108411902
+        !y = (51524893^2+1)mod(111735593) =    38249201
+        y = (38249201^2+1)mod(111735593) =     105569156
+
+        gcd(|108411902-105569156|, 111735593) = 101
+
+    111735593 / 101 = 1106293
+    111735593 is factored by (1106293)*(101)
+
+
+Question 4: Factor the integer 1000000044000000259 using Fermat's factoring method.
+
+    ceil(sqrt(1000000044000000259)) = 1000000022
+    (1000000022)^2 - 1000000044000000259 = 225 = 15^2
+    1000000044000000259 = 1000000022^2 + 15^2
+    1000000044000000259 = (1000000022 + 15)*(1000000022 - 15) = (1000000037)*(1000000007)
+
+    1000000044000000259 can be factored into 1000000037 * 1000000007
+
+
+Question 5: RSA Decryption: Decrypt the message, and convert it to base 36. What is the decryption key? Do they?
+    
+    Encryption key: (7,111735593)
+    c: 107163113, 80846506, 85591265, 86376060, 69747588, 26066180
+
+    Factor 111735593 (Question 3): 1106293*101
+    Euler Totient Function: 1106292*100 = 110629200
+    d = 7^-1 mod 110629200 = 31608343
+
+    Decrypting using (31608343, 111735593)
+        107163113^31608343 mod 111735593    = 22968553
+        80846506^31608343 mod 111735593     = 46493200
+        85591265^31608343 mod 111735593     = 23113246
+        86376060^31608343 mod 111735593     = 41029538
+        69747588^31608343 mod 111735593     = 21544068
+        26066180^31608343 mod 111735593     = 47841073
+
+    m = 22968553 46493200 23113246 41029538 21544068 47841073
+    Converted to base 36: DOAND ROIDS DREAM OFELE CTRIC SHEEP
+
+    Do androids dream of electric sheep?
+    I don't think androids need sleep. So I'm going to go with no.
+
+
+Question 6: RSA Encryption
+    Encrypt the following plaintext: 0, 1, 10, 11, 21, 34, 44, 45, 54 ...
+
+        **Using rsaEncryption.cpp
+
+        Using: (e=23, n=55)
+            0^23 mod 55 =   0
+            1^23 mod 55 =   1
+            10^23 mod 55 =  10
+            11^23 mod 55 =  11
+            21^23 mod 55 =  21
+            44^23 mod 55 =  44
+            45^23 mod 55 =  45
+            54^23 mod 55 =  54
+
+            0, 1, 10, 11, 21, 34, 44, 45, 54
+
+        Using: (e=11, n=55)
+            0^11 mod 55 =   0
+            1^11 mod 55 =   1
+            10^11 mod 55 =  10
+            11^11 mod 55 =  11
+            21^11 mod 55 =  21
+            44^11 mod 55 =  44
+            45^11 mod 55 =  45
+            54^11 mod 55 =  54
+
+            0, 1, 10, 11, 21, 34, 44, 45, 54
+
+        Using: (e=37, n=55)
+            0^37 mod 55 =   0
+            1^37 mod 55 =   1
+            10^37 mod 55 =  10
+            11^37 mod 55 =  11
+            21^37 mod 55 =  21
+            44^37 mod 55 =  44
+            45^37 mod 55 =  45
+            54^37 mod 55 =  54
+
+            0, 1, 10, 11, 21, 34, 44, 45, 54
+
+
+Question 7: Compute Bob and Alice's Shared Secret using Diffie-Hellman.
+    If the given secrets are for a and b
+        Given:
+            p=64627, g=5
+            a=11111, b=22222
+
+        Find 'alpha' using Alice's Secret:
+            alpha = 5^11111 mod 64627
+            alpha = 25112
+        Bob sends Alice beta=46905
+        Alice's Calculation of Shared Secret:
+            46905^11111 mod 64627 = 26015
+
+        Find 'b' using Bob's Secret:
+            beta = 5^22222 mod 64627
+            beta = 46905
+        Alice sends Bob alpha=25112
+        Bob's Calculation of Shared Secret:
+            25112^22222 mod 64627 = 26015
+
+        Shared Secret = 26015
+
+    If the secrets are for alpha and beta (I did this first but I think you want it the other way)
+        Given:
+            p=64627, g=5
+            alpha=11111, beta=22222
+
+        Find 'a' using Alice's Secret:
+            11111 = 5^a mod 64627
+            a = 8356
+        Bob sends Alice beta=22222
+        Alice's Calculation of Shared Secret:
+            22222^8356 mod 64627 = 36757
+
+        Find 'b' using Bob's Secret:
+            22222 = 5^a mod 64627
+            b = 5101
+        Alice sends Bob alpha=11111
+        Bob's Calculation of Shared Secret:
+            11111^5101 mod 64627 = 36757
+
+        Shared Secret = 36757
+
+
+Question 8: Decipher Alice's message to Bob using ElGamal.
+    If the given secrets are for a and b
+        Alice knows:
+            a=11111, p=64627
+            beta=46905 (from bob)
+            m=55555
+
+        Alice Computes:    
+            h = 46905^11111 mod 64627 = 26015
+            s = 55555*26015 mod 64627 = 9724
+
+        Alice sends Bob:
+            alpha=25112, s=9724
+        Bob knows:
+            b=22222, p=64627
+
+        Bob computes: 
+            h = 25112^22222 mod 64627 = 26015
+            m = (9724 * 26015^-1) mod 64627 = 9724 * 46522 mod 64627
+            m = 55555
+
+    If the secrets are for alpha and beta (I did this first but I think you want it the other way)
+        Alice knows:
+            a=8356, p=64627
+            beta=22222 (from bob)
+            m=55555
+
+        Alice Computes:    
+            h = 22222^8356 mod 64627 = 36757
+            s = 55555*36757 mod 64627 = 15816
+
+        Alice sends Bob:
+            alpha=11111, s=15816
+        Bob knows:
+            b=5101, p=64627
+
+        Bob computes: 
+            h = 11111^5101 mod 64627 = 36757
+            m = (15816 * 36757^-1) mod 64627 = 15816 * 26674 mod 64627
+            m = 55555
+
+
+Questions 9: Find x using the Baby-step Giant-step method
+
+    33 ≡ 5^x modulo 103
+    
+    p=103, floor(sqrt(p)) = 10
+    x=a*10+b | a,b < 10
+
+    Need 33*5^(-10a) mod 103 for 0<=a<=10...
+
+        a  | 5^(-10a) mod 103 | 33 * (5^(-10a) mod 103)
+        _______________________________________________
+        0  | 1                | 33
+        1  | 28               | 100
+        2  | 63               | 19
+        3  | 13               | 17
+        4  | 55               | 64
+        5  | 98               | 41
+        6  | 66               | 15
+        7  | 97               | 8
+        8  | 38               | 18
+        9  | 34               | 92
+        10 | 25               | 1
+
+    Need 5^b mod 103 for 0<=b<=10...
+
+        b  | 5^b mod 103
+        _______________
+        0  | 1
+        1  | 5
+        2  | 25
+        3  | 22
+        4  | 7
+        5  | 35
+        6  | 72
+        7  | 51
+        8  | 49
+        9  | 39
+        10 | 92
+
+
+    a=9, b=10, thus...
+    5^10 = 33 * 5^(-90) mod 103
+    5^100 = 33 mod 103
+
+    x=100

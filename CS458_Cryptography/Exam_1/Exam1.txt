@@ -1,0 +1,702 @@
+Question 1: Shift Cipher Without Key
+
+    Given Encrypted Text: 
+        HKROT JGGZK GHUUM KXUTU AXLOK RJZXO VZUQK TZAIQ EOIGT ZHKRO 
+        KBKYN KJOJZ NGZOZ YPAYZ YUBKX EEAIQ EOZNO TQOZY XKGRR ETGYZ 
+        EOJJO KOLZN KEGRR QTKCU TKZOS KOTZN KLOXY ZMXGJ KOGZK GHUUM 
+        KXZUU
+
+    Decrypted Text Using Key 'B':
+        GJQNS IFFYJ FGTTL JWTST ZWKNJ QIYWN UYTPJ SYZHP DNHFS YGJQN 
+        JAJXM JINIY MFYNY XOZXY XTAJW DDZHP DNYMN SPNYX WJFQQ DSFXY 
+        DNIIN JNKYM JDFQQ PSJBT SJYNR JNSYM JKNWX YLWFI JNFYJ FGTTL 
+        JWYTT 
+    Decrypted Text Using Key 'C':
+        FIPMR HEEXI EFSSK IVSRS YVJMI PHXVM TXSOI RXYGO CMGER XFIPM 
+        IZIWL IHMHX LEXMX WNYWX WSZIV CCYGO CMXLM ROMXW VIEPP CREWX 
+        CMHHM IMJXL ICEPP ORIAS RIXMQ IMRXL IJMVW XKVEH IMEXI EFSSK 
+        IVXSS 
+    Decrypted Text Using Key 'D':
+        EHOLQ GDDWH DERRJ HURQR XUILH OGWUL SWRNH QWXFN BLFDQ WEHOL 
+        HYHVK HGLGW KDWLW VMXVW VRYHU BBXFN BLWKL QNLWV UHDOO BQDVW 
+        BLGGL HLIWK HBDOO NQHZR QHWLP HLQWK HILUV WJUDG HLDWH DERRJ 
+        HUWRR 
+    Decrypted Text Using Key 'E':
+        DGNKP FCCVG CDQQI GTQPQ WTHKG NFVTK RVQMG PVWEM AKECP VDGNK 
+        GXGUJ GFKFV JCVKV ULWUV UQXGT AAWEM AKVJK PMKVU TGCNN APCUV 
+        AKFFK GKHVJ GACNN MPGYQ PGVKO GKPVJ GHKTU VITCF GKCVG CDQQI 
+        GTVQQ 
+    Decrypted Text Using Key 'F':
+        CFMJO EBBUF BCPPH FSPOP VSGJF MEUSJ QUPLF OUVDL ZJDBO UCFMJ 
+        FWFTI FEJEU IBUJU TKVTU TPWFS ZZVDL ZJUIJ OLJUT SFBMM ZOBTU 
+        ZJEEJ FJGUI FZBMM LOFXP OFUJN FJOUI FGJST UHSBE FJBUF BCPPH 
+        FSUPP 
+    Decrypted Text Using Key 'G':
+        BELIN DAATE ABOOG ERONO URFIE LDTRI PTOKE NTUCK YICAN TBELI 
+        EVESH EDIDT HATIT SJUST SOVER YYUCK YITHI NKITS REALL YNAST 
+        YIDDI EIFTH EYALL KNEWO NETIM EINTH EFIRS TGRAD EIATE ABOOG 
+        ERTOO 
+
+    Plain Text:
+        Belinda ate a booger,
+        on our field trip to Kentucky,
+        I can't believe she did that,
+        It's just so very yucky.
+        I think it's really nasty,
+        I'd die if they all knew,
+        one time in the first grade,
+        I ate a booger too.
+            
+
+Question 2: Affine Cipher Without Key
+
+    Given Encrypted Text:
+        YRSZW CJNXI IKRYZ VNKRR TRLWI KRYXT GELHH ZWWRT LIJJW CBRBR 
+        ERGLE NRCIL YERJI KRZIJ SSIKR BJFIL TLXIK CJDLI JIKZT TZSRW 
+        ICRJC SFTIZ WDYLH YILLD ZITIL SSLWJ SSLGX TTLLW IBRWI FDZCT 
+        BRERA XDZWV LXIIK RBZWC LBTLG IKRYX TIKJI ELIIR WRVVO XTISZ 
+        WVRER CIKRB KLSRB JFILH LXWIE XTKHL ERYRS ZWCJN XIJYZ VTSZN 
+        RLGJN KRRTR SZDRW LWRYR GLER
+    Given Plaintext: BELINDA is the first word
+
+    c1 = a*p1+k mod 26  =>  'Y' = a*'B'+k mod 26  =>  24 = a*1+k mod 26  =>  24 = a+k mod 26   =>  k = 24-a mod 26
+    c2 = a*p2+k mod 26  =>  'R' = a*'E'+k mod 26  =>  17 = a*4+k mod 26  =>  17 = 4a+k mod 26  =>  k = 17-4a mod 26
+
+    24-a = 17-4a  =>  3a = -7  =>  3a = 19  =>  a = 15  =>  a^-1 = 7
+    k = 24-a = 24-(15) = 9                  =>  k = 9
+
+    Decryption Key: 7(9-y) = x
+    Decrypted Text:
+        BELIN DACUT THEBI GCHEE SEONT HEBUS FROMM INNES OTAAN DWEWE
+        REFOR CEDTO BREAT HEITA LLTHE WAYTO SOUTH DAKOT ATHIS SILEN
+        TDEAD LYSTI NKBOM BTOOK ITSTO LLONA LLOFU SSOON TWENT YKIDS
+        WEREP UKING OUTTH EWIND OWSOF THEBU STHAT ROTTE NEGGJ USTLI
+        NGERE DTHEW HOLEW AYTOM OUNTR USHMO REBEL INDAC UTABI GSLIC
+        EOFAC HEESE LIKEN ONEBE FORE
+    Plain Text:
+        Belinda cut the big cheese on the bus from Minnesota
+        and we were forced to breathe it all the way to South Dakota.
+        This silent deadly stink bomb took its toll on all of us.
+        Soon, twenty kids we're puking out the windows of the bus.
+        That rotten egg just lingered the whole way to Mount Rushmore.
+        Belinda cut a big slice of a cheese like none before.
+
+
+Question 3: Substitution Cipher With Key
+
+    Given Encrypted Text: 
+        UFOSO GTKSV LNVSD NGMDK SNVMW UFKUG FKXOR NVMWD NWGUF GMIUF 
+        GTGTV MJGIO JBEOY KVTOG FKXOO MNVDF WGRRG YVJUB RGMWG MDLBI 
+        OBTKM WUFOS OGTOL PGSGY KJOXG WOMYO UFKUU FOBOA GTUUO SSBPS 
+        KUYFO UU
+    Key: keyword
+    Substitution Alphabet:
+        ABCDEFGHIJKLMNOPQRSTUVWXYZ  =>
+        KEYWORDFGHIJLMNPQSTUVXZABC
+        (This is used backwards to decrypt rather than encrypt)
+        
+    Decrypted Text:
+        THERE ISARU MOURG OINGA ROUND THATI HAVEF OUNDG ODITH INKTH
+        ISISU NLIKE LYBEC AUSEI HAVEE NOUGH DIFFI CULTY FINDI NGMYK
+        EYSAN DTHER EISEM PIRIC ALEVI DENCE THATT HEYEX ISTTE RRYPR
+        ATTCHE TT
+    Plain Text:
+        There is a rumor going around that I have found god. I think
+        this is unlikely because I have enough difficulty finding my
+        keys and there is empirical evidence that they exist.
+            -Terry Prattchett
+
+
+Question 4: Substitution Cipher Known Plaintext Attack
+
+    Given Encrypted Text:
+        YU REL KXYDA KXVK OEEWTH PVJ WHEJJ,
+        OT WBVI REL CYJJTI KXT MELDKR UVYH!
+        OTBYDIV FLATI ED VBB KXT HYITJ
+        VDI XTH JBYCT WEK YD CR XVYH!
+
+        PXYBT KPYHBYDW ED KXT BEEF-I-BEEF,
+        Y BEEATI LF KEPVHI KXT JAR,
+        Y JVP OTBYDIV XYWX VOENT
+        VDI XTH OVHU UTBB YD CR TRT!
+
+        OTBYDIV JKVHKTI OBEPYDW MXLDAJ
+        VBB ENTH CR BYKKBT JYJKTH,
+        JXT JFTPTI JECT ED KXT KYBK-V PXYHB,
+        JXT JFTPTI JECT ED KXT KPYJKTH!
+
+        PT JVP V CEJK LDJYWXKBR WHTTD,
+        VJ OTBYDIV HEIT 'KXT MECTK'
+        PXYBT JXT XENTHTI, PT WEK MENTHTI,
+        YD YMAR-JKYMAR FYMABT NECYK!
+
+    Substitution Alphabet:
+        ABCDEFGHIJKLMNOPQRSTUVWXYZ
+        KLMNOP_RDSTUCVBW_Y_EFAGHI_
+
+    Y and V => A and I
+    T is most common. T=E
+    KXT = THE
+    If Y, V and T  are all vowels, then there are only two more.
+
+    KYBK-V PXYHB = tilt-a whirl     ??      Theme = Carnival
+    J=S from twiJster and little JiJster
+    lEEF-I-lEEF  = loop-d-loop      ??
+    twirliDW = twirling
+    Oelinda = belinda
+    MoLntR Uair = county fair
+    thinA = think
+    Cissed = missed
+    aboNe = above
+        QED
+
+    Distribution of Characters:
+        A: 8/388    = .020219
+        B: 25/388   = .064433
+        C: 10/388   = .025773
+        D: 20/388   = .051546
+        E: 30/388   = .077320
+        F: 7/388    = .018041
+        G: 0/388    = 0
+        H: 19/388   = .046392
+        I: 19/388   = .046392
+        J: 26/388   = .067010
+        K: 29/388   = .074742
+        L: 7/388    = .018041
+        M: 7/388    = .018041
+        N: 5/388    = .012887
+        O: 9/388    = .023196
+        P: 14/388   = .036082
+        Q: 0/388    = 0
+        R: 11/388   = .028351
+        S: 0/388    = 0
+        T: 51/388   = .131443
+        U: 4/388    = .010309
+        V: 22/388   = .056701
+        W: 10/388   = .025773
+        X: 23/388   = .059278
+        Y: 32/388   = .082474
+        Z: 0/388    = 0
+    Distribution of Characters Sorted by Frequency:
+        T: 51/388   = .131443       =>      T=E     Most frequent letter
+        Y: 32/388   = .082474
+        E: 30/388   = .077320
+        K: 29/388   = .074742
+        J: 26/388   = .067010
+        B: 25/388   = .064433
+        X: 23/388   = .059278
+        V: 22/388   = .056701
+        D: 20/388   = .051546
+        H: 19/388   = .046392
+        I: 19/388   = .046392
+        P: 14/388   = .036082
+        R: 11/388   = .028351
+        C: 10/388   = .025773
+        W: 10/388   = .025773
+        O: 9/388    = .023196
+        A: 8/388    = .020219
+        F: 7/388    = .018041
+        L: 7/388    = .018041
+        M: 7/388    = .018041
+        N: 5/388    = .012887
+        U: 4/388    = .010309
+        G: 0/388    = 0
+        Q: 0/388    = 0
+        S: 0/388    = 0
+        Z: 0/388    = 0
+
+    Decrypted Text:
+        if you think that booger was gross,
+        be glad you missed the county fair!
+        belinda puked on all the rides
+        and her slime got in my hair!
+
+        while twirling on the loop-d-loop,
+        i looked up toward the sky,
+        i saw belinda high above
+        and her barf fell in my eye!
+
+        belinda started blowing chunks
+        all over my little sister,
+        she spewed some on the tilt-a whirl,
+        she spewed some on the twister!
+
+        we saw a most unsightly green,
+        as belinda rode 'the comet'
+        while she hovered, we got covered,
+        in icky-sticky pickle vomit!
+
+
+Question 5: Rail Fence Cipher Without Key
+
+    Given Encrypted Text:
+        IAGIG OUTLM BDAIS UTENO EIEAU
+        TEWSO NTQIA LYAHB TBTHN ONLKS
+        QITR
+
+    Decrypted Text:
+        IAGIGOUTLMBDAISUTENOEIEAUTE
+        WSONTQIALYAHBTBTHNONLKSQITR
+
+    Plain Text:
+        I was going to quit all my bad habits, but then no one likes a quitter.
+
+
+Question 6: Vigenère Cipher With Key
+    Given Encrypted Text:
+        JZOLGHA IVFI ITK ZS, TORX XPK DTZMY VY XPK VVIIT,
+        INX BNL MVCK VGIA YATC, TORX EV UJMSXAZ HR GUBK JIIL.
+    Given Key: "eight"
+
+    J-E = 9-4   = 5     = 5     = F
+    Z-I = 25-8  = 17    = 17    = R
+    O-G = 14-6  = 8     = 8     = I
+    L-H = 11-7  = 4     = 4     = E
+    G-T = 6-19  = -13   = 13    = N
+
+    H-E = 7-4   = 3     = 3     = D
+    A-I = 0-8   = -8    = 18    = S
+    I-G = 8-6   = 2     = 2     = C
+    V-H = 21-7  = 14    = 14    = O
+    F-T = 5-19  = -14   = 12    = M
+     
+    I-E = 8-4   = 4     = 4     = E
+    I-I = 8-8   = 0     = 0     = A
+    T-G = 19-6  = 13    = 13    = N
+    K-H = 10-7  = 3     = 3     = D
+    Z-T = 25-19 = 6     = 6     = G
+    
+    S-E = 18-4  = 14    = 14    = O
+    T-I = 19-8  = 11    = 11    = L
+    O-G = 14-6  = 8     = 8     = I
+    R-H = 17-7  = 10    = 10    = K
+    X-T = 23-19 = 4     = 4     = E
+    
+    X-E = 23-4  = 19    = 19    = T
+    P-I = 15-8  = 7     = 7     = H
+    K-G = 10-6  = 4     = 4     = E
+    D-H = 3-7   = -4    = 22    = W
+    T-T = 19-19 = 0     = 0     = A
+    
+    Z-E = 25-4  = 21    = 21    = V
+    M-I = 12-8  = 4     = 4     = E
+    Y-G = 24-6  = 18    = 18    = S
+    V-H = 21-7  = 14    = 14    = O
+    Y-T = 24-19 = 5     = 5     = F
+        
+    X-E = 23-4  = 19    = 19    = T
+    P-I = 15-8  = 7     = 7     = H
+    K-G = 10-6  = 4     = 4     = E
+    V-H = 21-7  = 14    = 14    = O
+    V-T = 21-19 = 2     = 2     = C
+
+    I-E = 8-4   = 4     = 4     = E
+    I-I = 8-8   = 0     = 0     = A
+    T-G = 19-6  = 13    = 13    = N
+    I-H = 8-7   = 1     = 1     = B
+    N-T = 13-19 = -6    = 20    = U
+    
+    X-E = 23-4  = 19    = 19    = T
+    B-I = 1-8   = -7    = 19    = T
+    N-G = 13-6  = 7     = 7     = H
+    L-H = 11-7  = 4     = 4     = E
+    M-T = 12-19 = -7    = 19    = T
+    
+    V-E = 21-4  = 17    = 17    = R
+    C-I = 2-8   = -6    = 20    = U
+    K-G = 10-6  = 4     = 4     = E
+    V-H = 21-7  = 14    = 14    = O
+    G-T = 6-19  = -13   = 13    = N
+        
+    I-E = 8-4   = 4     = 4     = E
+    A-I = 0-8   = -8    = 18    = S
+    Y-G = 24-6  = 18    = 18    = S
+    A-H = 0-7   = -7    = 19    = T
+    T-T = 19-19 = 0     = 0     = A
+    
+    C-E = 2-4   = -2    = 24    = Y
+    T-I = 19-8  = 11    = 11    = L
+    O-G = 14-6  = 8     = 8     = I
+    R-H = 17-7  = 10    = 10    = K
+    X-T = 23-19 = 4     = 4     = E
+    
+    E-E = 4-4   = 0     = 0     = A
+    V-I = 21-8  = 13    = 13    = N
+    U-G = 20-6  = 14    = 14    = O
+    J-H = 9-7   = 2     = 2     = C
+    M-T = 12-19 = -7    = 19    = T
+
+    S-E = 18-4  = 14    = 14    = O
+    X-I = 23-8  = 15    = 15    = P
+    A-G = 0-6   = -6    = 20    = U
+    Z-H = 25-7  = 18    = 18    = S
+    H-T = 7-19  = -12   = 14    = O
+        
+    R-E = 17-4  = 13    = 13    = N
+    G-I = 6-8   = -2    = 24    = Y
+    U-G = 20-6  = 14    = 14    = O
+    B-H = 1-7   = -6    = 20    = U
+    K-T = 10-19 = -9    = 17    = R
+    
+    J-E = 9-4   = 5     = 5     = F
+    I-I = 8-8   = 0     = 0     = A
+    I-G = 8-6   = 2     = 2     = C
+    L-H = 11-7  = 4     = 4     = E
+
+
+    Decrypted Text:
+        Friends come and go, like the waves of the ocean,
+        but the true ones stay, like an octopus on your face.
+
+
+Question 7: Vigenère Cipher Without Key
+
+    Given Encrypted Text:
+        JHVTL IIVXS UWRTA MWABL IWSFW SEAEA AEVWL BMPLA EVEMZ FVITL 
+        TSEIK DYQTF EAMMU IWXHW OEMEK JHVTL IIVXS UJYGY VWFES DOEGV 
+        IYQNF HSYLA OJEVL JQWNJ FMAHM MHVTL IIVXS UJYGY VWMWJ BXLXJ 
+        FEXUM HWEGV ULILZ FPPLG GXLKW FGVTT TWXBU LCEEA FRFKS JRWTD 
+        MGSOW SIHBF TGEUK JHVTL IIVXS UVSVC TMRTY JERMT SSAGT PBMWJ 
+        BXLXJ FEXVZ JGOXF TXLTL IEZXU IMGDW OTSQA EVEMZ FVITL DEGMA 
+        ULEME BOIFW TGVXS NSYVZ JHVTL IIVXS ULEBJ CEPEK GVSFM OHIKL 
+        IIGHM DLMWJ BXLXJ FEXUJ FEHMZ BXLTK UYVGW EKVHK TPCZJ FIRHJ 
+        ULIUA HKILL FEVMZ XSVFL IEXRG VZIXN FVWXW OMHKS ULIKW BXITJ 
+        XEBTF EWPBE ZIIEK LMRBO JWLMZ BXXAW DLYKU IASND EWERT FIXLS 
+        SIELA OMHKS ULIKW BXKTJ CEKXS DSGDJ PEGAG SXIGL IERMG FZIKW 
+        WIVXS UFIXL TEKTA O
+
+    Kasiski Test:
+        "JHVTL IIVXS U" is repeated four times
+            75, 140, 105
+        "A EVEMZ FVITL" is repeated twice
+            245
+        The only common factor of these three strings is 5
+        Thus, I predict that the length of the key is 5
+    
+    Friedman's Index of Coincidence:
+        Frequency Chart:
+            A: 19/566   =>  .03356890459
+            B: 17/566   =>  .03003533569
+            C: 5/566    =>  .00883392226
+            D: 10/566   =>  .01766784452
+            E: 44/566   =>  .0777385159
+            F: 27/566   =>  .04770318021
+            G: 23/566   =>  .0406360424
+            H: 18/566   =>  .03180212014
+            I: 42/566   =>  .074204947
+            J: 26/566   =>  .04593639576
+            K: 21/566   =>  .0371024735
+            L: 40/566   =>  .07067137809
+            M: 29/566   =>  .05123674912
+            N: 5/566    =>  .008833922261
+            O: 12/566   =>  .02120141343
+            P: 8/566    =>  .01413427562
+            Q: 4/566    =>  .00706713781
+            R: 10/566   =>  .01766784452
+            S: 30/566   =>  .05300353357
+            T: 31/566   =>  .05477031802
+            U: 20/566   =>  .03533568905
+            V: 34/566   =>  .06007067138
+            W: 31/566   =>  .05477031802
+            X: 36/566   =>  .06360424028
+            Y: 11/566   =>  .01943462898
+            Z: 13/566   =>  .02296819788
+        Dot Prodcut: .04971968685
+
+        k=.0265(566)/(.04971968685(565)+.0656-.0385(566))
+        k=2.356028031
+    
+    Now Break It:
+        1st Column's IOC:
+            A: 0.0261698
+            B: 0.0292687
+            C: 0.0358323
+            D: 0.0333435
+            E: 0.0374276
+            F: 0.0378467
+            G: 0.0428806
+            H: 0.041086
+            I: 0.0470312
+            J: 0.0439709
+            K: 0.0359675
+            L: 0.0372616
+            M: 0.0466084
+            N: 0.0428367
+            O: 0.0331906
+            P: 0.0310488
+            Q: 0.0245843
+            R: 0.0377019
+            S: 0.0488715
+            T: 0.0352723
+            U: 0.0292844
+            V: 0.0436287
+            W: 0.0346008
+            X: 0.0410285
+            Y: 0.0511597
+            Z: 0.0520972
+        1st Column's IOC Sorted:
+            Z: 0.0520972    =>  A
+            Y: 0.0511597    =>  B
+            S: 0.0488715    =>  H
+            I: 0.0470312    =>  R
+            M: 0.0466084    =>  N
+
+        2nd Column's IOC:
+            A: 0.0319797
+            B: 0.0312458
+            C: 0.0348155
+            D: 0.043958
+            E: 0.0414393
+            F: 0.0446326
+            G: 0.0407248
+            H: 0.0341936
+            I: 0.046262
+            J: 0.0443578
+            K: 0.0417583
+            L: 0.03364
+            M: 0.0353076
+            N: 0.028335
+            O: 0.0445528
+            P: 0.0422249
+            Q: 0.0313418
+            R: 0.0341946
+            S: 0.0403727
+            T: 0.0339924
+            U: 0.0401432
+            V: 0.0455479
+            W: 0.0606903
+            X: 0.0258211
+            Y: 0.032374
+            Z: 0.0360943
+        2nd Column's IOC Sorted:
+            W: 0.0606903    =>  D
+            I: 0.046262     =>  R
+            V: 0.0455479    =>  E
+            F: 0.0446326    =>  U
+            O: 0.0445528    =>  L
+
+        3rd Column's IOC:
+            A: 0.0352272
+            B: 0.0305092
+            C: 0.0399629
+            D: 0.037907
+            E: 0.0289481
+            F: 0.0580356
+            G: 0.0366548
+            H: 0.0304852
+            I: 0.045601
+            J: 0.0449521
+            K: 0.0404895
+            L: 0.036603
+            M: 0.0410142
+            N: 0.0269973
+            O: 0.0351287
+            P: 0.0438838
+            Q: 0.032038
+            R: 0.0311742
+            S: 0.0531442
+            T: 0.0316102
+            U: 0.0351706
+            V: 0.0492177
+            W: 0.0545715
+            X: 0.034125
+            Y: 0.0309152
+            Z: 0.0356335
+        3rd Column's IOC Sorted:
+            F: 0.0580356    =>  U
+            W: 0.0545715    =>  D
+            S: 0.0531442    =>  H
+            V: 0.0492177    =>  E
+            I: 0.045601     =>  R
+
+        4th Column's IOC:
+            A: 0.0374293
+            B: 0.031925
+            C: 0.0283474
+            D: 0.0446895
+            E: 0.0302991
+            F: 0.0358801
+            G: 0.0496246
+            H: 0.0597331
+            I: 0.0305015
+            J: 0.0359853
+            K: 0.0383761
+            L: 0.0299173
+            M: 0.0322697
+            N: 0.0384254
+            O: 0.0438398
+            P: 0.036616
+            Q: 0.0454649
+            R: 0.034461
+            S: 0.0254938
+            T: 0.0449977
+            U: 0.0495195
+            V: 0.0445056
+            W: 0.038727
+            X: 0.0377417
+            Y: 0.0315692
+            Z: 0.0436602
+        4th Column's IOC Sorted:
+            H: 0.0597331    =>  S
+            G: 0.0496246    =>  T
+            U: 0.0495195    =>  F
+            Q: 0.0454649    =>  J
+            T: 0.0449977    =>  G
+
+        5th Column's IOC:
+            A: 0.0426298
+            B: 0.0463782
+            C: 0.0365033
+            D: 0.0308783
+            E: 0.0429217
+            F: 0.0310858
+            G: 0.0393716
+            H: 0.0571884
+            I: 0.0564172
+            J: 0.0301496
+            K: 0.0286733
+            L: 0.0312477
+            M: 0.0310981
+            N: 0.0318661
+            O: 0.0369095
+            P: 0.0450329
+            Q: 0.0338963
+            R: 0.0535393
+            S: 0.0403331
+            T: 0.0325395
+            U: 0.0431591
+            V: 0.0442765
+            W: 0.0403084
+            X: 0.0305702
+            Y: 0.0350326
+            Z: 0.0279935
+        5th Column's IOC Sorted:
+            H: 0.0571884    =>  S
+            I: 0.0564172    =>  R
+            R: 0.0535393    =>  I
+            B: 0.0463782    =>  Y
+            P: 0.0450329    =>  K
+
+        After playing around with different combinations,
+        I tried BRDTS and found that the word eat shows up multiple
+        times in the string "JHVTL IIVXS U" "XSU".
+        So, Assuming that the first letter and last two letters are correct,
+        I discovered more three letter words that work, "you", "bug", "rat"
+
+        Using this, and the assumption that the keyword is not nonsense,
+        and is actually a word, I found that the word "BEETS" could be made
+        using these IOC values. This resulted in the following decrypted text...
+
+        Decryption Key = YVVGH
+        Encryption Key = BEETS
+
+        Decrypted Text:
+            IDRAT HEREA TSNAI LSWIT HSOME RAWLI ZARDT AILSI DRATH EREAT
+            SOAPS CUMAN DWITC HSTOE NAILS IDRAT HEREA TFUNG USBLA CKAND
+            HUMUN GOUSI NFACT IMSUR EIWOU LDRAT HEREA TFUNG USIDR ATHER
+            EATBU GSAND THESH ELLSO FTHRE ECRAB SSTIC KYALI ENBRA INSAL
+            LCOVE REDIN SCABS IDRAT HEREA TROCK SINAG IANTB ROWNB OXIDR
+            ATHER EATCH ICKEN STHAT HAVEC HICKE NPOXI DRATH EREAT CACTI
+            THATM AKEME SCREA MOUCH IDRAT HEREA THAIR BALLS FROMU NDERT
+            HECOU CHIDR ATHER EATBR EADTH ATHAS TURNE DGROS SLYGR EENOR
+            THEBI GGEST EARTH WORMT HATYO UVEEV ERSEE NIDRA THERE ATEAR
+            WAXAN DSLIM YEELS KINIW ISHTH ATTHE CHURC HWOUL DSAYB EETSA
+            REASI NIDRA THERE ATGAR BAGEA COCKR OACHO RTENT HANTO EVERE
+            VEREA TBEET SAGAI N
+        Plain Text:
+            I'd rather eat snails with some raw lizard tails.
+            I'd rather eat soap scuum and witch's toenails.
+            I'd rather eat fungus, black and humungous.
+            In fact, I'm sure I would rather eat fungus.
+            I'd rather eat bugs and the shells of three crabs,
+            sticky alien brains, all covered in scabs.
+            I'd rather eat rocks in a giant brown box.
+            I'd rather eat chickens that have chicken pox.
+            I'd rather eat cacti that make me scream outch.
+            I;d rahter eat bread that has turned grossly green,
+            or the biggest earth worm that you've ever seen.
+            I'd rather eat ear wax and slimy eel skin.
+            I wisht hat the church would say beets are a sin.
+            I'd rather eat garbage, a cockroach or ten,
+            than to ever ever eat beets again!
+        Do I agree?:
+            I do not beleive I could say that I agree 
+            with the sentiment expressed here.
+        
+
+Question 8: Autokey Cipher With Key
+
+    Given Encrypted Text:  GIBRW GUDRP AUICG NPGCR IWBUS VJERU GULUI EGOYK ASSJL MSCTZ XEIEX
+    Decryption Key: OTTO
+
+    G-O = 6-14  = -8    = 18    = S
+    I-T = 8-19  = -11   = 15    = P
+    B-T = 1-19  = -18   = 8     = I
+    R-O = 17-14 = 3     = 3     = D
+    
+    W-S = 22-18 = 4     = 4     = E 
+    G-P = 6-15  = -9    = 17    = R
+    U-I = 20-8  = 12    = 12    = M
+    D-D = 3-3   = 0     = 0     = A
+
+    R-E = 17-4  = 13    = 13    = N
+    P-R = 15-17 = -2    = 24    = Y
+    A-M = 0-12  = -12   = 14    = O
+    U-A = 20-0  = 20    = 20    = U
+
+    I-N = 8-13  = -5    = 21    = V
+    C-Y = 2-24  = -22   = 4     = E
+    G-O = 6-14  = -8    = 18    = S
+    N-U = 13-20 = -7    = 19    = T
+
+    P-V = 15-21 = -6    = 20    = U
+    G-E = 6-4   = 2     = 2     = C
+    C-S = 2-18  = -16   = 10    = K
+    R-T = 17-19 = -2    = 24    = Y
+
+    I-U = 8-20  = -12   = 14    = O
+    W-C = 22-2  = 20    = 20    = U
+    B-K = 1-10  = -9    = 17    = R
+    U-Y = 20-24 = -4    = 22    = W
+
+    S-O = 18-14 = 4     = 4     = E
+    V-U = 21-20 = 1     = 1     = B
+    J-R = 9-17  = -8    = 18    = S
+    E-W = 4-22  = -18   = 8     = I
+
+    R-E = 17-4  = 13    = 13    = N
+    U-B = 20-1  = 19    = 19    = T
+    G-S = 6-18  = -12   = 14    = 0
+    U-I = 20-8  = 12    = 12    = M
+
+    L-N = 11-13 = -2    = 24    = Y
+    U-T = 20-19 = 1     = 1     = B
+    I-O = 8-14  = -6    = 20    = U
+    E-M = 4-12  = -8    = 18    = S
+
+    G-Y = 6-24  = -18   = 8     = I
+    O-B = 14-1  = 13    = 13    = N
+    Y-U = 24-20 = 4     = 4     = E
+    K-S = 10-18 = -8    = 18    = S
+
+    A-I = 0-8   = -8    = 18    = S
+    S-N = 18-13 = 5     = 5     = F
+    S-E = 18-4  = 14    = 14    = O
+    J-S = 9-18  = -9    = 17    = R
+    
+    L-S = 11-18 = -7    = 19    = T
+    M-F = 12-5  = 7     = 7     = H
+    S-O = 18-14 = 4     = 4     = E
+    C-R = 2-17  = -15   = 11    = L
+
+    T-T = 19-19 = 0     = 0     = A
+    Z-H = 25-7  = 18    = 18    = S
+    X-E = 23-4  = 19    = 19    = T
+    E-L = 4-11  = -7    = 19    = T
+
+    I-A = 8-0   = 8     = 8     = I
+    E-S = 4-18  = -14   = 12    = M
+    X-T = 23-19 = 4     = 4     = E
+
+    Decrypted Text: SPIDE RMANY OUVE STUCK YOURW EBSIN TOMYB USINE SSFOR THELAS TTIME
+    Plain Text: Spiderman, You've stuck your webs into my business for the last time!

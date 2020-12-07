@@ -1,0 +1,132 @@
+Question 1: Schnorr Protocol
+    given:
+        5^a=6 mod 64627 | a = 14016
+        p = 64627, g = 5, A = 6
+
+    Round 1:
+        Peggy chooses r = 10
+        Peggy computes t
+            t = 5^10 mod 64627 = 6948
+        Peggy tells Victor t
+
+        Victor Sends Peggy c = 100
+        Peggy computes s
+            s = 10 + 14016 * 100 = 1401610
+        Peggy tells Victor s
+
+        Victor verifies
+            5^1401610 = 6948 * 6^100 mod 64627
+            5766 = 5766
+
+    Round 2:
+        Peggy chooses r = 20
+        Peggy computes t
+            t = 5^20 mod 64627 = 62962
+        Peggy tells Victor t
+
+        Victor Sends Peggy c = 200
+        Peggy computes s
+            s = 20 + 14016 * 200 = 2803220
+        Peggy tells Victor s
+
+        Victor verifies
+            5^2803220 = 62962 * 6^200 mod 64627
+            28478 = 28478
+
+
+    Round 3:
+        Peggy chooses r = 30
+        Peggy computes t
+            t = 5^30 mod 64627 = 64440
+        Peggy tells Victor t
+
+        Victor Sends Peggy c = 200
+        Peggy computes s
+            s = 30 + 14016 * 300 = 4204830
+        Peggy tells Victor s
+
+        Victor verifies
+            5^4204830 = 64440 * 6^300 mod 64627
+            51568 = 51568
+
+
+Question 2: Zero-Knowledge Proof
+    Peggy claims she can instantly count the total number of coins inside a large glass jar. Design a zero-knowledge protocol for
+    Peggy to prove this to Victor, without telling him how many coins are in the jar. Once you design your protocol, explain why it is
+    Complete, Sound, and Zero-Knowledge.
+
+    Protocol: Peggy turns around, and Victor either adds or removes a specific number of coins. Peggy turns back around,
+    and since she knew how many were in the jar before and after she turned around, she can tell him how many were added or removed.
+
+    Completeness: If Peggy is telling the truth then she will answer correctly every time, which is extremely unlikely if she was lying.
+        So, if Peggy answers correctly every time, then Victor will be convinced that she is telling the truth.
+
+    Soundness: If Peggy is lying, it is very unlikely that she will be able to randomly guess how many coins were added or removed. If she
+        answers incorrectly a single time, then Victor will not be convinced that she is telling the truth.
+
+    Zero-knowledge: Peggy never tells Victor how many coins are in the jar, only how many were added or removed. Victor already knows how many
+        he added or removed, so the only knowledge that he gains is that Peggy is telling the truth.
+
+
+Question 3: Simple Elliptic Curve Arithmetic (Using Sage)
+    Let E be the elliptic curve with equation y^2 = x^3+x+6 modulo 11.
+    
+    How many points are on this curve, including the point at infinity?
+        13 points
+
+    Let P=(2,4). What is -P?
+        (2,7)
+
+    Let Q=(3,5). What is P+Q?
+        (7,2)
+
+    What is 2P?
+        (5,9)
+
+    Is there an integer n such that nP=∞? If so, what is it?
+        13*P = ∞
+        n = 13
+
+
+Question 4: Elliptic ElGamal (Using Sage)
+    Bob has asked Alice a question, and she plans to reply "Yes" using ElGamal with the elliptic curve y^2 = x^3+x+6 modulo 64627.
+    However, ("Yes",y) is not on the curve for any value of y. Find a nearby value for x such that (x,y) is on the curve so Alice can respond.
+
+    Yes in base 10: 44596
+
+    Points with x values close to 44596
+        (44593,5990), (44593,58637), (44599,9945), (44599,54682)
+
+
+Question 5: Elliptic Baby-Step Giant-Step (Using Sage)
+    E : y^2 = x^3+x+6 modulo 64627
+    Find n such that (47884,24106) = n * (52458,4831)
+
+    See attached sage code used to compute n
+
+    n = 99
+
+
+Question 6: Quantum Key Exchange
+    Given:
+        Alice's Bits:  010110101100
+        Alice's Bases: ++xx++xx++xx
+        Bob's Bases:   x+x+x+x++x+x
+
+    Alice:
+        01 01 10 10  11 00
+        ++ xx ++ xx  ++ xx
+        ↑← ↖↗ ←↑ ↗↖ ←← ↖↖
+
+    Alice sends photons to Bob
+
+    Bob: (R = randomly a 0 or 1)
+        ↑← ↖↗ ←↑ ↗↖ ←← ↖↖
+        x+ x+ x+ x+  +x +x
+        R1 0R R0 1R  1R R0        
+
+    Bob sends Alice bases
+    Alice tells Bob the correct bases
+
+    Shared Key: 100110
+    Their key is 6 bits
