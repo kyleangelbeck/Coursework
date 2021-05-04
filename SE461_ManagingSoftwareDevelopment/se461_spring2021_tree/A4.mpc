@@ -1,0 +1,40 @@
+project (Test) {
+    exename = A4.exe
+    
+    specific (make) {
+        compile_flags += -std=c++11
+    }
+
+    Template_Files {
+        Base_Array.cpp
+        Dynamic_Array.cpp
+        Stack.cpp
+    }
+
+    Source_Files {
+        driver.cpp
+        EvalTreeBuilder.cpp
+        EvaluateVisitor.cpp
+        Node.cpp
+        NumberNode.cpp
+        AdditionNode.cpp
+        SubtractionNode.cpp
+        MultiplicationNode.cpp
+        DivisionNode.cpp
+        ModuloNode.cpp
+    }
+
+    Header_Files {
+        TreeBuilder.h
+        EvalTreeBuilder.h
+        TreeVisitor.h
+        EvaluateVisitor.h
+        Node.h
+        NumberNode.h
+        AdditionNode.h
+        SubtractionNode.h
+        MultiplicationNode.h
+        DivisionNode.h
+        ModuloNode.h
+    }
+}

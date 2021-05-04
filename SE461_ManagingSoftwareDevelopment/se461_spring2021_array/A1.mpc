@@ -1,0 +1,16 @@
+project (Test) {
+    exename = A1.exe
+    
+    Source_Files {
+        Driver.cpp
+        Array.cpp
+    }
+
+    Header_Files {
+        Array.h
+    }
+    
+    Inline_Files {
+        Array.inl
+    }
+}

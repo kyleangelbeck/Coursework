@@ -1,0 +1,9 @@
+.vscode
+
+*.o
+*.exe
+
+test.*
+
+Makefile
+Makefile.Test

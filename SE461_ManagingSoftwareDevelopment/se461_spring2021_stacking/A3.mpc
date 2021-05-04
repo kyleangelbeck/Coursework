@@ -1,0 +1,38 @@
+project (Test) {
+    exename = A3.exe
+    
+    specific (make) {
+        compile_flags += -std=c++11
+    }
+
+    Template_Files {
+        Base_Array.cpp
+        Dynamic_Array.cpp
+        Stack.cpp
+    }
+
+    Source_Files {
+        driver.cpp
+        StackCommandFactory.cpp
+        Number.cpp
+        BinaryOperator.cpp
+        AdditionOperator.cpp
+        SubtractionOperator.cpp
+        MultiplicationOperator.cpp
+        DivisionOperator.cpp
+        ModuloOperator.cpp
+    }
+
+    Header_Files {
+        AbstractCommandFactory.h
+        StackCommandFactory.h
+        StackCommand.h
+        Number.h
+        BinaryOperator.h
+        AdditionOperator.h
+        SubtractionOperator.h
+        MultiplicationOperator.h
+        DivisionOperator.h
+        ModuloOperator.h
+    }
+}
